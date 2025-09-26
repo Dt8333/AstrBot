@@ -1480,8 +1480,3 @@ UID: {user_id} 此 ID 可用于设置管理员。
         plugin_cfg["reset"] = reset_cfg
         alter_cmd_cfg["astrbot"] = plugin_cfg
         await sp.global_put("alter_cmd", alter_cmd_cfg)
-
-    @filter.command_group("test")
-    def test_group(self):
-        """测试指令组"""
-        pass
