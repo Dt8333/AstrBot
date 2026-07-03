@@ -7,7 +7,7 @@ import sys
 from contextlib import AsyncExitStack
 from datetime import timedelta
 from pathlib import Path, PureWindowsPath
-from typing import Any, Generic
+from typing import TYPE_CHECKING, Any, Generic
 
 import httpx
 from tenacity import (
@@ -102,6 +102,11 @@ except (ModuleNotFoundError, ImportError):
     logger.warning(
         "Warning: Missing 'mcp' dependency, MCP services will be unavailable."
     )
+
+if TYPE_CHECKING:
+    import anyio
+    import mcp
+    from mcp.client.sse import sse_client
 
 streamable_http_client_legacy = None
 streamable_http_client = None

@@ -850,10 +850,10 @@ async def _process_quote_message(
                 "Skipping quote image captioning."
             )
         else:
+            prov = None
+            path = None
+            compress_path = None
             try:
-                prov = None
-                path = None
-                compress_path = None
                 prov = plugin_context.get_provider_by_id(img_cap_prov_id)
                 if prov is None:
                     prov = plugin_context.get_using_provider(event.unified_msg_origin)

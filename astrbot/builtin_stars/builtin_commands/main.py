@@ -37,7 +37,7 @@ class Main(star.Star):
 
     @filter.permission_type(filter.PermissionType.ADMIN)
     @filter.command("name")
-    async def name(self, event: AstrMessageEvent, alias: GreedyStr) -> None:
+    async def umo_name(self, event: AstrMessageEvent, alias: GreedyStr) -> None:
         """Set display name for current UMO"""
         await self.name_c.name(event, alias)
 

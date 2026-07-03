@@ -20,7 +20,7 @@ class PlatformStat(SQLModel, table=True):
     Note: In astrbot v4, we moved `platform` table to here.
     """
 
-    __tablename__: str = "platform_stats"
+    __tablename__: str = "platform_stats"  # type: ignore
 
     id: int = Field(primary_key=True, sa_column_kwargs={"autoincrement": True})
     timestamp: datetime = Field(nullable=False)
@@ -41,7 +41,7 @@ class PlatformStat(SQLModel, table=True):
 class ProviderStat(TimestampMixin, SQLModel, table=True):
     """Per-response provider stats for internal agent runs."""
 
-    __tablename__: str = "provider_stats"
+    __tablename__: str = "provider_stats"  # type: ignore
 
     id: int | None = Field(
         default=None,
@@ -63,7 +63,7 @@ class ProviderStat(TimestampMixin, SQLModel, table=True):
 
 
 class ConversationV2(TimestampMixin, SQLModel, table=True):
-    __tablename__: str = "conversations"
+    __tablename__: str = "conversations"  # type: ignore
 
     inner_conversation_id: int | None = Field(
         default=None,
@@ -102,7 +102,7 @@ class PersonaFolder(TimestampMixin, SQLModel, table=True):
     用于组织和管理多个 Persona，类似于文件系统的目录结构。
     """
 
-    __tablename__: str = "persona_folders"
+    __tablename__: str = "persona_folders"  # type: ignore
 
     id: int | None = Field(
         primary_key=True,
@@ -135,7 +135,7 @@ class Persona(TimestampMixin, SQLModel, table=True):
     It can be used to customize the behavior of LLMs.
     """
 
-    __tablename__: str = "personas"
+    __tablename__: str = "personas"  # type: ignore
 
     id: int | None = Field(
         primary_key=True,
@@ -168,7 +168,7 @@ class Persona(TimestampMixin, SQLModel, table=True):
 class CronJob(TimestampMixin, SQLModel, table=True):
     """Cron job definition for scheduler and WebUI management."""
 
-    __tablename__: str = "cron_jobs"
+    __tablename__: str = "cron_jobs"  # type: ignore
 
     id: int | None = Field(
         default=None,
@@ -199,7 +199,7 @@ class CronJob(TimestampMixin, SQLModel, table=True):
 class Preference(TimestampMixin, SQLModel, table=True):
     """This class represents preferences for bots."""
 
-    __tablename__: str = "preferences"
+    __tablename__: str = "preferences"  # type: ignore
 
     id: int | None = Field(
         default=None,
@@ -230,7 +230,7 @@ class PlatformMessageHistory(TimestampMixin, SQLModel, table=True):
     or platform-specific messages.
     """
 
-    __tablename__: str = "platform_message_history"
+    __tablename__: str = "platform_message_history"  # type: ignore
 
     id: int | None = Field(
         primary_key=True,
@@ -250,7 +250,7 @@ class PlatformMessageHistory(TimestampMixin, SQLModel, table=True):
 class WebChatThread(TimestampMixin, SQLModel, table=True):
     """A side thread created from a selected WebChat assistant response."""
 
-    __tablename__: str = "webchat_threads"
+    __tablename__: str = "webchat_threads"  # type: ignore
 
     id: int | None = Field(
         primary_key=True,
@@ -284,7 +284,7 @@ class PlatformSession(TimestampMixin, SQLModel, table=True):
     Each session can have multiple conversations (对话) associated with it.
     """
 
-    __tablename__: str = "platform_sessions"
+    __tablename__: str = "platform_sessions"  # type: ignore
 
     inner_id: int | None = Field(
         primary_key=True,
@@ -317,7 +317,7 @@ class PlatformSession(TimestampMixin, SQLModel, table=True):
 class UmoAlias(TimestampMixin, SQLModel, table=True):
     """User-facing names for unified message origins."""
 
-    __tablename__: str = "umo_aliases"
+    __tablename__: str = "umo_aliases"  # type: ignore
 
     id: int | None = Field(
         primary_key=True,
@@ -343,7 +343,7 @@ class Attachment(TimestampMixin, SQLModel, table=True):
     Attachments can be images, files, or other media types.
     """
 
-    __tablename__: str = "attachments"
+    __tablename__: str = "attachments"  # type: ignore
 
     inner_attachment_id: int | None = Field(
         primary_key=True,
@@ -371,7 +371,7 @@ class Attachment(TimestampMixin, SQLModel, table=True):
 class ApiKey(TimestampMixin, SQLModel, table=True):
     """API keys used by external developers to access Open APIs."""
 
-    __tablename__: str = "api_keys"
+    __tablename__: str = "api_keys"  # type: ignore
 
     inner_id: int | None = Field(
         primary_key=True,
@@ -408,7 +408,7 @@ class ApiKey(TimestampMixin, SQLModel, table=True):
 class DashboardTrustedDevice(TimestampMixin, SQLModel, table=True):
     """Trusted dashboard device token used to skip TOTP for a limited time."""
 
-    __tablename__: str = "dashboard_trusted_devices"
+    __tablename__: str = "dashboard_trusted_devices"  # type: ignore
 
     id: int | None = Field(
         default=None,
@@ -426,7 +426,7 @@ class ChatUIProject(TimestampMixin, SQLModel, table=True):
     Projects allow users to group related conversations together.
     """
 
-    __tablename__: str = "chatui_projects"
+    __tablename__: str = "chatui_projects"  # type: ignore
 
     inner_id: int | None = Field(
         primary_key=True,
@@ -459,7 +459,7 @@ class ChatUIProject(TimestampMixin, SQLModel, table=True):
 class SessionProjectRelation(SQLModel, table=True):
     """This class represents the relationship between platform sessions and ChatUI projects."""
 
-    __tablename__: str = "session_project_relations"
+    __tablename__: str = "session_project_relations"  # type: ignore
 
     id: int | None = Field(
         primary_key=True,

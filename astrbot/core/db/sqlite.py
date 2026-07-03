@@ -256,7 +256,7 @@ class SQLiteDatabase(BaseDatabase):
             query = query.order_by(desc(ConversationV2.created_at))
             result = await session.execute(query)
 
-            return result.scalars().all()
+            return list(result.scalars().all())
 
     async def get_conversation_by_id(self, cid):
         async with self.get_db() as session:
@@ -275,7 +275,7 @@ class SQLiteDatabase(BaseDatabase):
                 .offset(offset)
                 .limit(page_size),
             )
-            return result.scalars().all()
+            return list(result.scalars().all())
 
     async def get_filtered_conversations(
         self,
@@ -327,7 +327,7 @@ class SQLiteDatabase(BaseDatabase):
                 .limit(page_size)
             )
             result = await session.execute(result_query)
-            conversations = result.scalars().all()
+            conversations = list(result.scalars().all())
 
             return conversations, total
 
@@ -615,7 +615,7 @@ class SQLiteDatabase(BaseDatabase):
                 .order_by(desc(PlatformMessageHistory.created_at))
             )
             result = await session.execute(query.offset(offset).limit(page_size))
-            return result.scalars().all()
+            return list(result.scalars().all())
 
     async def get_platform_message_history_by_id(
         self, message_id: int
@@ -962,7 +962,7 @@ class SQLiteDatabase(BaseDatabase):
             session: AsyncSession
             query = select(Persona)
             result = await session.execute(query)
-            return result.scalars().all()
+            return list(result.scalars().all())
 
     async def update_persona(
         self,
@@ -1251,7 +1251,7 @@ class SQLiteDatabase(BaseDatabase):
             if key is not None:
                 query = query.where(Preference.key == key)
             result = await session.execute(query)
-            return result.scalars().all()
+            return list(result.scalars().all())
 
     async def remove_preference(self, scope, scope_id, key) -> None:
         """Remove a preference by scope ID and key."""
